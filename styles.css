@@ -1,0 +1,271 @@
+/* Light Theme (Default) */
+:root {
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --card-background: #fff;
+    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Dark Theme */
+  [data-theme="dark"] {
+    --background-color: #333;
+    --text-color: #f4f4f4;
+    --card-background: #444;
+    --card-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  }
+  
+  /* General Styles */
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Search Controls */
+  .search-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  #search-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  #search-button, #clear-button, #full-list-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+  }
+  
+  #search-button:hover, #clear-button:hover, #full-list-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Per Page Dropdown */
+  .per-page {
+    margin-bottom: 20px;
+  }
+  
+  .per-page label {
+    margin-right: 10px;
+  }
+  
+  .per-page select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Results Section */
+  #results {
+    margin-top: 20px;
+  }
+  
+  .monster-card {
+    background-color: var(--card-background);
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    text-align: left;
+    animation: scaleIn 0.5s ease-in-out;
+  }
+  
+  .monster-card h2 {
+    margin-top: 0;
+  }
+  
+  .monster-card p {
+    margin: 5px 0;
+  }
+  
+  /* Monster Image */
+  .monster-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* Expandable Stats */
+  .monster-stats {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: var(--card-background);
+    border-radius: 5px;
+    box-shadow: var(--card-shadow);
+  }
+  
+  .monster-stats p {
+    margin: 5px 0;
+  }
+  
+  /* Full Monster List Page */
+  #full-list {
+    margin-top: 20px;
+  }
+  
+  #monster-names {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #monster-names li {
+    cursor: pointer;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: var(--card-background);
+    border-radius: 5px;
+    box-shadow: var(--card-shadow);
+    transition: background-color 0.3s;
+  }
+  
+  #monster-names li:hover {
+    background-color: var(--background-color);
+  }
+  
+  .monster-details {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: var(--card-background);
+    border-radius: 5px;
+    box-shadow: var(--card-shadow);
+  }
+  
+  /* Return Button */
+  #return-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-bottom: 20px;
+  }
+  
+  #return-button:hover {
+    background-color: #218838;
+  }
+  
+  /* Loading Spinner */
+  #loading-spinner {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    animation: spin 1s linear infinite;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* Pagination */
+  #pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    animation: slideIn 0.5s ease-in-out;
+  }
+  
+  #pagination button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  #pagination button:hover:not(:disabled) {
+    background-color: #0056b3;
+  }
+  
+  #jump-to-page {
+    padding: 10px;
+    width: 60px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Error Message */
+  .error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 20px;
+  }
