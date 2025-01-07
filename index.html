@@ -3,18 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>D&D Monster Search</title>
+  <title>D&D 5th Edition Monster Search</title>
   <link rel="stylesheet" href="styles.css">
+  
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Cinzel&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
+  
+  <audio id="click-sound" src="click.mp3"></audio>
+
   <div class="container">
-    <!-- Title -->
-    <h1>D&D Monster Search</h1>
+   
+    <div class="header">
+      <img src="logo.png" alt="D&D Logo" class="logo">
+      <h1>D&D 5th Edition Monster Search</h1>
+    </div>
 
-    <!-- Theme Toggle Button -->
-    <button id="theme-toggle">Toggle Dark Mode</button>
+    
+    <button id="theme-toggle" class="theme-toggle">
+      <span class="sun">☀️</span>
+      <span class="moon">🌙</span>
+    </button>
 
-    <!-- Search Controls -->
+   
     <div class="search-controls">
       <input type="text" id="search-input" placeholder="Search for a monster...">
       <button id="search-button">Search</button>
@@ -22,7 +34,7 @@
       <a href="full-list.html" id="full-list-button">View Full Monster List</a>
     </div>
 
-    <!-- Monsters Per Page Dropdown -->
+   
     <div class="per-page">
       <label for="per-page-select">Monsters per page:</label>
       <select id="per-page-select">
@@ -33,13 +45,13 @@
       </select>
     </div>
 
-    <!-- Results Section -->
+   
     <div id="results"></div>
 
-    <!-- Loading Spinner -->
+    
     <div id="loading-spinner" class="hidden">Loading...</div>
 
-    <!-- Pagination -->
+    
     <div id="pagination">
       <button id="prev-button">Previous</button>
       <input type="number" id="jump-to-page" min="1" placeholder="Page">
@@ -47,7 +59,7 @@
     </div>
   </div>
 
-  <!-- JavaScript -->
+ 
   <script src="script.js"></script>
 </body>
 </html>

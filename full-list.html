@@ -5,25 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Full Monster List</title>
   <link rel="stylesheet" href="styles.css">
+  
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Cinzel&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
+  
+  <audio id="click-sound" src="click.mp3"></audio>
+
   <div class="container">
-    <!-- Title -->
+   
     <h1>Full Monster List</h1>
 
-    <!-- Return to Monster Search Button -->
+   
+    <button id="theme-toggle" class="theme-toggle">
+      <span class="sun">☀️</span>
+      <span class="moon">🌙</span>
+    </button>
+
+   
     <a href="index.html" id="return-button">Return to Monster Search</a>
 
-    <!-- Full Monster List Section -->
+    
     <div id="full-list">
       <ul id="monster-names"></ul>
     </div>
 
-    <!-- Loading Spinner -->
+    
     <div id="loading-spinner" class="hidden">Loading...</div>
   </div>
 
-  <!-- JavaScript -->
+ 
   <script src="script.js"></script>
 </body>
 </html>

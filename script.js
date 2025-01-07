@@ -1,4 +1,4 @@
-// DOM Elements (Shared for both pages)
+
 const searchInput = document.getElementById('search-input');
 const searchButton = document.getElementById('search-button');
 const clearButton = document.getElementById('clear-button');
@@ -14,18 +14,18 @@ const prevButton = document.getElementById('prev-button');
 const nextButton = document.getElementById('next-button');
 const jumpToPageInput = document.getElementById('jump-to-page');
 
-// Constants
+
 let currentPage = 1;
 let totalMonsters = 0;
 let allMonsters = [];
 let monstersPerPage = 10;
 
-// Cache for API responses
+
 const cache = new Map();
 
-// Theme Toggle
+
 if (themeToggle) {
-  // Load saved theme from localStorage
+  
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme) {
     document.body.dataset.theme = savedTheme;
@@ -34,16 +34,16 @@ if (themeToggle) {
   themeToggle.addEventListener('click', () => {
     const newTheme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
     document.body.dataset.theme = newTheme;
-    localStorage.setItem('theme', newTheme); // Save theme to localStorage
+    localStorage.setItem('theme', newTheme); 
   });
 }
 
-// Fetch Monster Data (Home Page)
+
 async function fetchMonsters(query) {
   try {
-    loadingSpinner.classList.remove('hidden'); // Show loading spinner
+    loadingSpinner.classList.remove('hidden'); 
 
-    // Check cache first
+   
     if (cache.has(query)) {
       allMonsters = cache.get(query);
       totalMonsters = allMonsters.length;
@@ -60,10 +60,10 @@ async function fetchMonsters(query) {
     allMonsters = data.results;
     totalMonsters = allMonsters.length;
 
-    // Cache the results
+    
     cache.set(query, allMonsters);
 
-    // Filter monsters based on search query
+    
     const filteredMonsters = allMonsters.filter(monster =>
       monster.name.toLowerCase().includes(query.toLowerCase())
     );
@@ -73,13 +73,13 @@ async function fetchMonsters(query) {
   } catch (error) {
     console.error(error);
     resultsDiv.innerHTML = `<p class="error-message">Error: ${error.message}</p>`;
-    paginationDiv.innerHTML = ''; // Clear pagination on error
+    paginationDiv.innerHTML = ''; 
   } finally {
-    loadingSpinner.classList.add('hidden'); // Hide loading spinner
+    loadingSpinner.classList.add('hidden'); 
   }
 }
 
-// Display Results (Home Page)
+
 function displayResults(monsters) {
   resultsDiv.innerHTML = '';
   if (monsters.length === 0) {
@@ -96,7 +96,7 @@ function displayResults(monsters) {
     const monsterCard = document.createElement('div');
     monsterCard.classList.add('monster-card');
 
-    // Fetch monster image (if available)
+   
     const monsterImage = monsterDetails.image ? `<img src="https://www.dnd5eapi.co${monsterDetails.image}" alt="${monster.name}">` : '';
 
     monsterCard.innerHTML = `
@@ -120,7 +120,7 @@ function displayResults(monsters) {
     `;
     resultsDiv.appendChild(monsterCard);
 
-    // Add event listener to the expand button
+    
     const expandButton = monsterCard.querySelector('.expand-button');
     const monsterStats = monsterCard.querySelector('.monster-stats');
     expandButton.addEventListener('click', () => {
@@ -130,7 +130,7 @@ function displayResults(monsters) {
   });
 }
 
-// Fetch Monster Details
+
 async function fetchMonsterDetails(url) {
   try {
     const response = await fetch(`https://www.dnd5eapi.co${url}`);
@@ -144,26 +144,26 @@ async function fetchMonsterDetails(url) {
   }
 }
 
-// Update Pagination (Home Page)
+
 function updatePagination(totalFilteredMonsters) {
   const totalPages = Math.ceil(totalFilteredMonsters / monstersPerPage);
 
   prevButton.disabled = currentPage === 1;
   nextButton.disabled = currentPage === totalPages;
 
-  // Jump to Page input
+  
   jumpToPageInput.value = currentPage;
   jumpToPageInput.max = totalPages;
 }
 
-// Fetch Full Monster List (Full List Page)
+
 if (monsterNamesList) {
   fetchFullMonsterList();
 }
 
 async function fetchFullMonsterList() {
   try {
-    loadingSpinner.classList.remove('hidden'); // Show loading spinner
+    loadingSpinner.classList.remove('hidden'); 
     const response = await fetch(`https://www.dnd5eapi.co/api/monsters`);
     if (!response.ok) {
       throw new Error('Failed to fetch full monster list');
@@ -174,11 +174,11 @@ async function fetchFullMonsterList() {
     console.error(error);
     monsterNamesList.innerHTML = `<p class="error-message">Error: ${error.message}</p>`;
   } finally {
-    loadingSpinner.classList.add('hidden'); // Hide loading spinner
+    loadingSpinner.classList.add('hidden'); 
   }
 }
 
-// Display Full Monster List (Full List Page)
+
 function displayFullMonsterList(monsters) {
   monsterNamesList.innerHTML = '';
   monsters.forEach((monster) => {
@@ -192,16 +192,16 @@ function displayFullMonsterList(monsters) {
   });
 }
 
-// Display Monster Details (Full List Page)
+
 function displayMonsterDetails(listItem, monsterDetails) {
-  // Remove any existing details
+  
   const existingDetails = listItem.nextElementSibling;
   if (existingDetails && existingDetails.classList.contains('monster-details')) {
     existingDetails.remove();
     return;
   }
 
-  // Create and append new details
+ 
   const detailsDiv = document.createElement('div');
   detailsDiv.classList.add('monster-details');
   detailsDiv.innerHTML = `
@@ -221,12 +221,12 @@ function displayMonsterDetails(listItem, monsterDetails) {
   listItem.insertAdjacentElement('afterend', detailsDiv);
 }
 
-// Event Listeners (Home Page)
+
 if (searchButton) {
   searchButton.addEventListener('click', () => {
     const query = searchInput.value.trim();
     if (query) {
-      currentPage = 1; // Reset to first page on new search
+      currentPage = 1; 
       fetchMonsters(query);
     }
   });
@@ -237,7 +237,7 @@ if (searchInput) {
     if (e.key === 'Enter') {
       const query = searchInput.value.trim();
       if (query) {
-        currentPage = 1; // Reset to first page on new search
+        currentPage = 1; 
         fetchMonsters(query);
       }
     }
@@ -246,16 +246,16 @@ if (searchInput) {
 
 if (clearButton) {
   clearButton.addEventListener('click', () => {
-    searchInput.value = ''; // Clear search input
-    resultsDiv.innerHTML = ''; // Clear results
-    paginationDiv.innerHTML = ''; // Clear pagination
+    searchInput.value = ''; 
+    resultsDiv.innerHTML = ''; 
+    paginationDiv.innerHTML = ''; 
   });
 }
 
 if (perPageSelect) {
   perPageSelect.addEventListener('change', () => {
     monstersPerPage = parseInt(perPageSelect.value, 10);
-    currentPage = 1; // Reset to first page when changing monsters per page
+    currentPage = 1; 
     if (searchInput.value.trim()) {
       fetchMonsters(searchInput.value.trim());
     }
@@ -293,11 +293,11 @@ if (jumpToPageInput) {
       displayResults(allMonsters);
       updatePagination(allMonsters.length);
     } else {
-      jumpToPageInput.value = currentPage; // Reset to current page if input is invalid
+      jumpToPageInput.value = currentPage; 
     }
   });
 }
-// Apply saved theme on page load
+
 function applySavedTheme() {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
@@ -305,6 +305,29 @@ function applySavedTheme() {
     }
   }
   
-  // Call this function on both pages
-  applySavedTheme();
   
+  applySavedTheme();
+
+ 
+function playClickSound() {
+  const clickSound = document.getElementById('click-sound');
+  clickSound.currentTime = 0; 
+  clickSound.play();
+}
+
+
+document.querySelectorAll('button, a').forEach((element) => {
+  element.addEventListener('click', (event) => {
+    playClickSound();
+
+    
+    if (element.tagName === 'A') {
+      event.preventDefault(); 
+      setTimeout(() => {
+        window.location.href = element.href; 
+      }, 200); 
+    }
+  });
+});
+
+
