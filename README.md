@@ -100,5 +100,5 @@ GitHub: montygracey
 
 ---
 
-Enjoy exploring the world of Dungeons & Dragons monsters! 🎲🐉
+Enjoy! 🎲🐉
    
